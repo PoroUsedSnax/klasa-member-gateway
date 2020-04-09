@@ -37,9 +37,9 @@ class MemberGateway extends Gateway {
 	 */
 	get(id) {
 		const [guildID, memberID] = id.split('.');
-		const guild = this.client.guilds.get(guildID);
+		const guild = this.client.guilds.cache.get(guildID);
 		if (guild) {
-			const member = guild.members.get(memberID);
+			const member = guild.members.cache.get(memberID);
 			return (member && member.settings) || null;
 		}
 
